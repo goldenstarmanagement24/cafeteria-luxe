@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafeteria Luxe | الفخامة في كل رشفة</title>
+    <style>
+        /* تنسيقات عامة */
+        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; background-color: #f9f9f9; color: #333; }
+        
+        /* الهيدر والقائمة */
+        header { background: #1a1a1a; color: #d4af37; padding: 2rem; text-align: center; border-bottom: 3px solid #d4af37; }
+        nav { background: #333; padding: 1rem; text-align: center; position: sticky; top: 0; z-index: 1000; }
+        nav a { color: #fff; margin: 0 15px; text-decoration: none; font-weight: bold; transition: 0.3s; }
+        nav a:hover { color: #d4af37; }
+        
+        /* القسم الرئيسي */
+        .hero { background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('coffee-bg.jpg') no-repeat center center/cover; color: #fff; padding: 120px 20px; text-align: center; }
+        .hero h2 { font-size: 3rem; margin-bottom: 10px; color: #d4af37; }
+        
+        /* القائمة والمعرض */
+        .container { max-width: 1100px; margin: auto; padding: 40px 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card { border: 1px solid #ddd; padding: 20px; text-align: center; background: #fff; transition: transform 0.3s; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .card:hover { transform: translateY(-10px); }
+        .card img { width: 100%; height: 200px; object-fit: cover; border-radius: 5px; margin-bottom: 15px; }
+
+        /* نموذج التواصل */
+        form { max-width: 600px; margin: auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        input, textarea { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; }
+        button { background: #d4af37; color: white; border: none; padding: 15px 30px; cursor: pointer; width: 100%; font-size: 1.1rem; font-weight: bold; border-radius: 4px; }
+        button:hover { background: #b8962d; }
+        
+        /* الفوتر */
+        footer { background: #1a1a1a; color: #fff; text-align: center; padding: 30px; margin-top: 40px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Cafeteria Luxe</h1>
+    </header>
+
+    <nav>
+        <a href="#home">الرئيسية</a>
+        <a href="#menu">قائمة الطعام</a>
+        <a href="#contact">حجز طاولة</a>
+    </nav>
+
+    <section id="home" class="hero">
+        <h2>تجربة القهوة الفاخرة</h2>
+        <p>نحن نصنع التميز في كل فنجان</p>
+    </section>
+
+    <div class="container" id="menu">
+        <h2 style="text-align: center; margin-bottom: 40px;">القائمة المميزة</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>إسبريسو فاخر</h3>
+                <p>مزيج خاص من أجود أنواع البن الإثيوبي.</p>
+                <p><strong>350 د.ج</strong></p>
+            </div>
+            <div class="card">
+                <h3>لاتيه الكراميل</h3>
+                <p>طبقات من القهوة والحليب مع صوص الكراميل.</p>
+                <p><strong>500 د.ج</strong></p>
+            </div>
+            <div class="card">
+                <h3>تشيز كيك فاخر</h3>
+                <p>حلاوة التوت البري مع قاعدة بسكويت مقرمشة.</p>
+                <p><strong>600 د.ج</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <section id="contact" class="container">
+        <h2 style="text-align: center; margin-bottom: 20px;">احجز طاولتك الآن</h2>
+        <form>
+            <input type="text" placeholder="الاسم الكامل" required>
+            <input type="email" placeholder="البريد الإلكتروني" required>
+            <textarea placeholder="رسالتك أو تفاصيل الحجز" rows="5"></textarea>
+            <button type="submit">تأكيد الحجز</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 جميع الحقوق محفوظة | Cafeteria Luxe</p>
+        <p>الموقع: الجزائر</p>
+    </footer>
+
+</body>
+</html>
