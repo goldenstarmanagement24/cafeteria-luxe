@@ -3,123 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CAMI CAFETIÈRE | Accueil</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <title>CAMI CAFETIÈRE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
     
     <style>
-        :root {
-            --gold: #c5a059;
-            --dark-green: #0a2a1a;
-            --black-overlay: rgba(0, 0, 0, 0.6);
-            --white: #ffffff;
-        }
-
+        :root { --gold: #c5a059; --black-overlay: rgba(0, 0, 0, 0.6); --white: #ffffff; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; background-color: #000; color: var(--white); scroll-behavior: smooth; }
+        
+        nav { position: fixed; top: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 30px 8%; z-index: 1000; background: rgba(0,0,0,0.8); }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--gold); }
+        .nav-links a { color: var(--white); text-decoration: none; margin: 0 15px; text-transform: uppercase; font-size: 0.9rem; }
+        .lang-select { background: transparent; color: var(--gold); border: 1px solid var(--gold); padding: 5px; cursor: pointer; }
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #000;
-            color: var(--white);
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
-
-        /* تنسيق القائمة العلوية */
-        nav {
-            position: absolute;
-            top: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 30px 8%;
-            z-index: 100;
-        }
-
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            letter-spacing: 3px;
-            color: var(--gold);
-        }
-
-        .nav-links a {
-            color: var(--white);
-            text-decoration: none;
-            margin: 0 20px;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover { color: var(--gold); }
-
-        .lang-select { color: var(--gold); cursor: pointer; border: 1px solid var(--gold); padding: 5px; background: transparent; }
-
-        /* قسم الهيرو */
-        .hero {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: url('1000026674.png') no-repeat center center/cover;
-            position: relative;
-        }
-
-        .hero-content {
-            background: var(--black-overlay);
-            padding: 50px;
-            text-align: center;
-            border: 1px solid var(--gold);
-            max-width: 700px;
-            backdrop-filter: blur(5px);
-            animation: fadeIn 1.5s ease-in;
-        }
-
-        .hero-content h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            color: var(--gold);
-            margin-bottom: 20px;
-        }
-
-        .hero-content p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 30px;
-            color: #eee;
-        }
-
-        .btn-menu {
-            padding: 15px 40px;
-            background: transparent;
-            border: 1px solid var(--gold);
-            color: var(--gold);
-            font-size: 1rem;
-            cursor: pointer;
-            transition: 0.4s;
-            text-transform: uppercase;
-        }
-
-        .btn-menu:hover {
-            background: var(--gold);
-            color: #000;
-        }
-
-        /* الأقسام المضافة */
-        section { padding: 100px 8%; min-height: 50vh; }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero-content h1 { font-size: 2.5rem; }
-        }
+        .hero { height: 100vh; display: flex; justify-content: center; align-items: center; background: #222; text-align: center; }
+        .hero-content { border: 1px solid var(--gold); padding: 50px; max-width: 700px; backdrop-filter: blur(5px); }
+        h1 { color: var(--gold); font-size: 3.5rem; margin-bottom: 20px; }
+        .btn-menu { margin-top: 20px; padding: 15px 40px; border: 1px solid var(--gold); background: transparent; color: var(--gold); cursor: pointer; text-transform: uppercase; }
+        
+        section { padding: 100px 8%; text-align: center; }
     </style>
 </head>
 <body>
@@ -127,12 +29,11 @@
     <nav>
         <div class="logo">CAMI CAFETIÈRE</div>
         <div class="nav-links">
-            <a href="#">Accueil</a>
-            <a href="#menu-section">Menu</a>
-            <a href="#reservation-section">Réservation</a>
-            <a href="#">Contact</a>
+            <a href="#" data-lang-fr="Accueil" data-lang-en="Home">Accueil</a>
+            <a href="#menu" data-lang-fr="Menu" data-lang-en="Menu">Menu</a>
+            <a href="#reservation" data-lang-fr="Réservation" data-lang-en="Reservation">Réservation</a>
         </div>
-        <select class="lang-select" onchange="changeLanguage(this.value)">
+        <select class="lang-select" onchange="updateLanguage(this.value)">
             <option value="fr">FR</option>
             <option value="en">EN</option>
         </select>
@@ -140,31 +41,49 @@
 
     <header class="hero">
         <div class="hero-content">
-            <h1 id="title">CAMI CAFETIÈRE</h1>
-            <p id="desc">L'expérience unique du café, infusée dans le raffinement et l'élégance. Découvrez nos créations artisanales dans un cadre d'exception.</p>
-            <button class="btn-menu" onclick="window.location.href='#reservation-section'">Réserver une table</button>
+            <h1 id="hero-title">CAMI CAFETIÈRE</h1>
+            <p id="hero-desc">L'expérience unique du café, infusée dans le raffinement et l'élégance.</p>
+            <button class="btn-menu" id="btn-res" onclick="window.location.href='#reservation'">Réserver une table</button>
         </div>
     </header>
 
-    <section id="menu-section">
-        <h2>Notre Menu</h2>
-        <p>Découvrez notre sélection de cafés et pâtisseries.</p>
+    <section id="menu">
+        <h2 id="menu-title">Notre Menu</h2>
     </section>
 
-    <section id="reservation-section">
-        <h2>Réservation</h2>
-        <p>Réservez votre table dès maintenant.</p>
+    <section id="reservation">
+        <h2 id="res-title">Réservation</h2>
     </section>
 
     <script>
         const translations = {
-            fr: { title: "CAMI CAFETIÈRE", desc: "L'expérience unique du café, infusée dans le raffinement et l'élégance." },
-            en: { title: "CAMI CAFETIÈRE", desc: "The unique coffee experience, infused with refinement and elegance." }
+            fr: {
+                heroTitle: "CAMI CAFETIÈRE",
+                heroDesc: "L'expérience unique du café, infusée dans le raffinement et l'élégance.",
+                btnRes: "Réserver une table",
+                menuTitle: "Notre Menu",
+                resTitle: "Réservation"
+            },
+            en: {
+                heroTitle: "CAMI CAFETIÈRE",
+                heroDesc: "The unique coffee experience, infused with refinement and elegance.",
+                btnRes: "Book a table",
+                menuTitle: "Our Menu",
+                resTitle: "Reservation"
+            }
         };
 
-        function changeLanguage(lang) {
-            document.getElementById('title').innerText = translations[lang].title;
-            document.getElementById('desc').innerText = translations[lang].desc;
+        function updateLanguage(lang) {
+            document.getElementById('hero-title').innerText = translations[lang].heroTitle;
+            document.getElementById('hero-desc').innerText = translations[lang].heroDesc;
+            document.getElementById('btn-res').innerText = translations[lang].btnRes;
+            document.getElementById('menu-title').innerText = translations[lang].menuTitle;
+            document.getElementById('res-title').innerText = translations[lang].resTitle;
+            
+            // تحديث الروابط في القائمة
+            document.querySelectorAll('.nav-links a').forEach(el => {
+                el.innerText = el.getAttribute('data-lang-' + lang);
+            });
         }
     </script>
 </body>
