@@ -3,117 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CAMI CAFETIÈRE | Premium Web Experience</title>
+    <title>CAMI CAFETIÈRE | Premium Experience</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    
     <style>
         :root { --black: #0a0a0a; --gold: #c5a059; --cream: #e6dfd1; --dark-green: #0a2a1a; }
         body { font-family: 'Cairo', sans-serif; background-color: var(--black); color: var(--cream); margin: 0; scroll-behavior: smooth; }
         h1, h2 { font-family: 'Playfair Display', serif; }
-        
-        /* Navbar */
-        nav { position: fixed; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: rgba(0,0,0,0.95); z-index: 1000; border-bottom: 1px solid var(--gold); box-sizing: border-box; }
+        nav { position: fixed; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: rgba(0,0,0,0.9); z-index: 1000; border-bottom: 1px solid var(--gold); }
         .nav-links { display: flex; align-items: center; }
         .nav-links a { color: var(--gold); text-decoration: none; font-weight: bold; margin: 0 15px; }
-        .menu-toggle { display: none; cursor: pointer; color: var(--gold); font-size: 24px; }
-
-        /* Floating WhatsApp */
-        .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; padding: 15px 20px; border-radius: 50px; font-size: 24px; z-index: 3000; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
-
-        @media (max-width: 768px) {
-            .menu-toggle { display: block; }
-            .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--black); flex-direction: column; padding: 20px 0; border-bottom: 1px solid var(--gold); }
-            .nav-links.active { display: flex; }
-        }
-
-        /* Sections */
+        .menu-toggle { display: none; cursor: pointer; color: var(--gold); }
+        header { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://i.ibb.co/L0N7gYm/1000026671.png'); background-size: cover; background-position: center; text-align: center; }
+        .btn { padding: 15px 30px; background: var(--gold); color: var(--black); font-weight: bold; cursor: pointer; text-decoration: none; }
         section { padding: 80px 5%; border-bottom: 1px solid #333; }
-        h2 { color: var(--gold); text-align: center; font-size: 2.5rem; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
-        .card { border: 1px solid var(--gold); padding: 20px; text-align: center; cursor: pointer; transition: 0.4s; }
+        .card { border: 1px solid var(--gold); padding: 20px; text-align: center; cursor: pointer; transition: 0.3s; }
         .card:hover { background: var(--gold); color: var(--black); }
-        
-        /* Form & Testimonials */
-        .form-group { margin-bottom: 15px; max-width: 400px; margin: 0 auto 15px; }
-        input { width: 100%; padding: 12px; background: #1a1a1a; border: 1px solid var(--gold); color: white; border-radius: 5px; box-sizing: border-box; }
-        .btn { display: inline-block; padding: 15px 30px; background: var(--gold); color: var(--black); border: none; font-weight: bold; cursor: pointer; transition: 0.3s; }
-        .testi { font-style: italic; color: #888; text-align: center; max-width: 600px; margin: 20px auto; }
+        @media (max-width: 768px) { .menu-toggle { display: block; } .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--black); flex-direction: column; padding: 20px; } .nav-links.active { display: flex; } }
     </style>
 </head>
 <body>
-
     <nav>
         <div class="logo">CAMI CAFETIÈRE</div>
         <div class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')"><i class="fas fa-bars"></i></div>
         <div class="nav-links">
             <a href="#home">Home</a><a href="#menu">Menu</a><a href="#reservation">Reservation</a><a href="#contact">Contact</a>
-            <select onchange="setLang(this.value)" style="background:none; color:var(--gold); border:1px solid var(--gold); margin-left:10px;">
-                <option value="fr">FR</option><option value="ar">AR</option><option value="en">EN</option>
-            </select>
         </div>
     </nav>
-
-    <header id="home" style="height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; background:linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('coffee-hero.jpg'); background-size:cover; background-position:center; text-align:center;">
-        <h1 style="font-size: 4rem; color:var(--gold); margin: 0;">CAMI CAFETIÈRE</h1>
-        <p>"L'Art du Café & du Raffinement"</p>
-        <a href="#reservation" class="btn">Réserver</a>
-    </header>
-
+    <header id="home"><h1>CAMI CAFETIÈRE</h1><p>"L'Art du Café"</p><a href="#reservation" class="btn">Réserver</a></header>
     <section id="menu">
         <h2>Nos Créations</h2>
         <div class="grid">
-            <div class="card" onclick="openModal('Espresso', '5$', 'Rich & Bold')"><h3>Espresso</h3></div>
-            <div class="card" onclick="openModal('Tiramisu', '9$', 'Authentic Italian')"><h3>Tiramisu</h3></div>
-            <div class="card" onclick="openModal('Cappuccino', '6$', 'Creamy Perfection')"><h3>Cappuccino</h3></div>
-            <div class="card" onclick="openModal('Cheesecake', '8$', 'French Style')"><h3>Cheesecake</h3></div>
+            <div class="card" onclick="alert('Espresso - 5$')"><h3>Espresso</h3></div>
+            <div class="card" onclick="alert('Tiramisu - 9$')"><h3>Tiramisu</h3></div>
         </div>
     </section>
 
     <section id="reservation">
         <h2>Réservation</h2>
-        <form id="resForm" onsubmit="sendWhatsApp(event)">
-            <div class="form-group"><input type="text" id="name" placeholder="Nom / الاسم" required></div>
-            <div class="form-group"><input type="date" id="date" required></div>
-            <div class="form-group"><input type="number" id="people" placeholder="Nombre de personnes / عدد الأشخاص" required></div>
-            <div style="text-align:center;"><button type="submit" class="btn">Envoyer via WhatsApp</button></div>
+        <form onsubmit="sendWhatsApp(event)" style="max-width:400px; margin:auto;">
+            <input type="text" id="name" placeholder="Nom" required style="width:100%; padding:10px; margin-bottom:10px;">
+            <input type="date" id="date" required style="width:100%; padding:10px; margin-bottom:10px;">
+            <button type="submit" class="btn">Send via WhatsApp</button>
         </form>
     </section>
 
-    <section>
-        <h2>Témoignages</h2>
-        <p class="testi">"La meilleure expérience café en ville, une ambiance vraiment premium !" - Ahmed, Client fidèle.</p>
-    </section>
-
-    <section id="contact" style="background: var(--dark-green);">
-        <h2>Contact</h2>
-        <div style="text-align:center;">
-            <p>Email: contact@camicafetiere.com</p>
-        </div>
-    </section>
-
-    <a href="https://wa.me/YOUR_NUMBER" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
-
-    <div id="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:9999; justify-content:center; align-items:center;" onclick="this.style.display='none'">
-        <div style="background:var(--cream); color:black; padding:40px; border-radius:15px; width:80%; max-width:400px;" onclick="event.stopPropagation()">
-            <h2 id="m-title"></h2><p id="m-price" style="color:var(--gold); font-size:1.5rem;"></p><p id="m-desc"></p>
-        </div>
-    </div>
+    <footer id="contact" style="padding:40px; text-align:center; background:var(--dark-green);">
+        <p>Contact Us</p>
+    </footer>
 
     <script>
         function sendWhatsApp(e) {
             e.preventDefault();
             let name = document.getElementById('name').value;
             let date = document.getElementById('date').value;
-            let p = document.getElementById('people').value;
-            let msg = `Bonjour, je souhaite réserver une table.%0ANom: ${name}%0ADate: ${date}%0APersonnes: ${p}`;
-            window.open(`https://wa.me/YOUR_NUMBER?text=${msg}`, '_blank');
-        }
-        function openModal(t, p, d) {
-            document.getElementById('m-title').innerText = t;
-            document.getElementById('m-price').innerText = p;
-            document.getElementById('m-desc').innerText = d;
-            document.getElementById('modal').style.display = 'flex';
+            window.open(`https://wa.me/213600000000?text=Reservation: ${name} le ${date}`, '_blank');
         }
     </script>
 </body>
