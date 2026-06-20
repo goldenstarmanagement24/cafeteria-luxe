@@ -1,93 +1,83 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="fr" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cafeteria Luxe | الفخامة في كل رشفة</title>
+    <title>CAMI CAFETIÈRE | Premium Coffee Experience</title>
+    <!-- مكتبة للحركات -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        /* تنسيقات عامة */
-        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; background-color: #f9f9f9; color: #333; }
+        :root { --black: #1a1a1a; --dark-green: #0a2a1a; --gold: #c5a059; --cream: #f4f1ea; }
         
-        /* الهيدر والقائمة */
-        header { background: #1a1a1a; color: #d4af37; padding: 2rem; text-align: center; border-bottom: 3px solid #d4af37; }
-        nav { background: #333; padding: 1rem; text-align: center; position: sticky; top: 0; z-index: 1000; }
-        nav a { color: #fff; margin: 0 15px; text-decoration: none; font-weight: bold; transition: 0.3s; }
-        nav a:hover { color: #d4af37; }
+        body { font-family: 'Georgia', serif; background-color: var(--black); color: var(--cream); margin: 0; scroll-behavior: smooth; }
         
-        /* القسم الرئيسي */
-        .hero { background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('coffee-bg.jpg') no-repeat center center/cover; color: #fff; padding: 120px 20px; text-align: center; }
-        .hero h2 { font-size: 3rem; margin-bottom: 10px; color: #d4af37; }
-        
-        /* القائمة والمعرض */
-        .container { max-width: 1100px; margin: auto; padding: 40px 20px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .card { border: 1px solid #ddd; padding: 20px; text-align: center; background: #fff; transition: transform 0.3s; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        .card:hover { transform: translateY(-10px); }
-        .card img { width: 100%; height: 200px; object-fit: cover; border-radius: 5px; margin-bottom: 15px; }
+        /* Navigation */
+        nav { position: fixed; width: 100%; padding: 20px; background: rgba(0,0,0,0.8); display: flex; justify-content: space-around; z-index: 1000; }
+        nav a { color: var(--gold); text-decoration: none; font-weight: bold; }
 
-        /* نموذج التواصل */
-        form { max-width: 600px; margin: auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-        input, textarea { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; }
-        button { background: #d4af37; color: white; border: none; padding: 15px 30px; cursor: pointer; width: 100%; font-size: 1.1rem; font-weight: bold; border-radius: 4px; }
-        button:hover { background: #b8962d; }
+        /* Hero */
+        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
         
-        /* الفوتر */
-        footer { background: #1a1a1a; color: #fff; text-align: center; padding: 30px; margin-top: 40px; }
+        /* Grid & Cards */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 50px; }
+        .card { border: 1px solid var(--gold); padding: 20px; cursor: pointer; transition: 0.3s; }
+        .card:hover { transform: scale(1.05); background: var(--dark-green); }
+
+        /* Modal (نافذة تكبير المنتج) */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; z-index: 2000; }
+        .modal-content { background: var(--cream); color: var(--black); padding: 30px; max-width: 500px; text-align: center; border-radius: 10px; }
+        
+        .btn { padding: 15px 30px; border: 1px solid var(--gold); color: var(--gold); background: none; cursor: pointer; }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Cafeteria Luxe</h1>
-    </header>
-
     <nav>
-        <a href="#home">الرئيسية</a>
-        <a href="#menu">قائمة الطعام</a>
-        <a href="#contact">حجز طاولة</a>
+        <a href="#home">Home</a>
+        <a href="#menu">Menu</a>
+        <a href="#reservation">Reservation</a>
     </nav>
 
-    <section id="home" class="hero">
-        <h2>تجربة القهوة الفاخرة</h2>
-        <p>نحن نصنع التميز في كل فنجان</p>
+    <header id="home" class="hero" data-aos="fade-in">
+        <h1>CAMI CAFETIÈRE</h1>
+        <p>"L'Art du Café & du Raffinement"</p>
+    </header>
+
+    <section id="menu">
+        <h2 style="text-align: center; color: var(--gold);">Nos Créations Signature</h2>
+        <div class="grid">
+            <div class="card" onclick="openModal('Espresso', 'Classic Italian Coffee', '5$')">
+                <h3>Espresso</h3>
+                <p>Click for details</p>
+            </div>
+            <div class="card" onclick="openModal('Cheesecake', 'Creamy French Style', '8$')">
+                <h3>Cheesecake</h3>
+                <p>Click for details</p>
+            </div>
+        </div>
     </section>
 
-    <div class="container" id="menu">
-        <h2 style="text-align: center; margin-bottom: 40px;">القائمة المميزة</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>إسبريسو فاخر</h3>
-                <p>مزيج خاص من أجود أنواع البن الإثيوبي.</p>
-                <p><strong>350 د.ج</strong></p>
-            </div>
-            <div class="card">
-                <h3>لاتيه الكراميل</h3>
-                <p>طبقات من القهوة والحليب مع صوص الكراميل.</p>
-                <p><strong>500 د.ج</strong></p>
-            </div>
-            <div class="card">
-                <h3>تشيز كيك فاخر</h3>
-                <p>حلاوة التوت البري مع قاعدة بسكويت مقرمشة.</p>
-                <p><strong>600 د.ج</strong></p>
-            </div>
+    <!-- Modal Element -->
+    <div id="productModal" class="modal" onclick="this.style.display='none'">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <h2 id="modalTitle"></h2>
+            <p id="modalDesc"></p>
+            <h3 id="modalPrice"></h3>
+            <button class="btn" onclick="document.getElementById('productModal').style.display='none'">Close</button>
         </div>
     </div>
 
-    <section id="contact" class="container">
-        <h2 style="text-align: center; margin-bottom: 20px;">احجز طاولتك الآن</h2>
-        <form>
-            <input type="text" placeholder="الاسم الكامل" required>
-            <input type="email" placeholder="البريد الإلكتروني" required>
-            <textarea placeholder="رسالتك أو تفاصيل الحجز" rows="5"></textarea>
-            <button type="submit">تأكيد الحجز</button>
-        </form>
-    </section>
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
 
-    <footer>
-        <p>&copy; 2026 جميع الحقوق محفوظة | Cafeteria Luxe</p>
-        <p>الموقع: الجزائر</p>
-    </footer>
-
+        function openModal(title, desc, price) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDesc').innerText = desc;
+            document.getElementById('modalPrice').innerText = price;
+            document.getElementById('productModal').style.display = 'flex';
+        }
+    </script>
 </body>
 </html>
