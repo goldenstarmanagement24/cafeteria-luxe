@@ -3,26 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CAMI CAFETIÈRE</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <title>CAMI CAFETIÈRE | Accueil</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    
     <style>
-        :root { --black: #0a0a0a; --gold: #c5a059; --cream: #e6dfd1; --dark-green: #0a2a1a; --white: #ffffff; }
-        body { font-family: 'Playfair Display', serif; background-color: var(--black); color: var(--cream); margin: 0; scroll-behavior: smooth; }
-        
-        nav { position: fixed; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; box-sizing: border-box; background: rgba(0,0,0,0.9); z-index: 1000; border-bottom: 1px solid var(--gold); }
-        .nav-links a { color: var(--gold); text-decoration: none; font-weight: bold; margin: 0 10px; }
-        
-        header { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('1000026674.png'); background-size: cover; background-position: center; text-align: center; }
-        h1 { font-size: 4rem; color: var(--gold); margin: 0; }
-        
-        section { padding: 80px 5%; border-bottom: 1px solid #333; }
-        h2 { color: var(--gold); text-align: center; font-size: 2.5rem; margin-bottom: 40px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
-        .card { border: 1px solid var(--gold); padding: 20px; text-align: center; }
-        
-        .form-container { max-width: 500px; margin: auto; }
-        input { width: 100%; padding: 10px; margin: 10px 0; background: #222; border: 1px solid var(--gold); color: white; }
-        button { width: 100%; padding: 10px; background: var(--gold); border: none; cursor: pointer; font-weight: bold; }
+        :root {
+            --gold: #c5a059;
+            --dark-green: #0a2a1a;
+            --black-overlay: rgba(0, 0, 0, 0.6);
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #000;
+            color: var(--white);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* تنسيق القائمة العلوية */
+        nav {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 8%;
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: var(--gold);
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--gold); }
+
+        .lang-select { color: var(--gold); cursor: pointer; border: 1px solid var(--gold); padding: 5px; background: transparent; }
+
+        /* قسم الهيرو */
+        .hero {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url('1000026674.png') no-repeat center center/cover;
+            position: relative;
+        }
+
+        .hero-content {
+            background: var(--black-overlay);
+            padding: 50px;
+            text-align: center;
+            border: 1px solid var(--gold);
+            max-width: 700px;
+            backdrop-filter: blur(5px);
+            animation: fadeIn 1.5s ease-in;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: #eee;
+        }
+
+        .btn-menu {
+            padding: 15px 40px;
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.4s;
+            text-transform: uppercase;
+        }
+
+        .btn-menu:hover {
+            background: var(--gold);
+            color: #000;
+        }
+
+        /* الأقسام المضافة */
+        section { padding: 100px 8%; min-height: 50vh; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero-content h1 { font-size: 2.5rem; }
+        }
     </style>
 </head>
 <body>
@@ -30,46 +127,44 @@
     <nav>
         <div class="logo">CAMI CAFETIÈRE</div>
         <div class="nav-links">
-            <a href="#home" class="lang" data-fr="Accueil" data-ar="الرئيسية">Accueil</a>
-            <a href="#menu" class="lang" data-fr="Menu" data-ar="القائمة">Menu</a>
-            <a href="#reservation" class="lang" data-fr="Réservation" data-ar="حجز">Réservation</a>
+            <a href="#">Accueil</a>
+            <a href="#menu-section">Menu</a>
+            <a href="#reservation-section">Réservation</a>
+            <a href="#">Contact</a>
         </div>
-        <button onclick="toggleLang()" style="background:none; color:var(--gold); border:1px solid var(--gold); cursor:pointer;">FR / AR</button>
+        <select class="lang-select" onchange="changeLanguage(this.value)">
+            <option value="fr">FR</option>
+            <option value="en">EN</option>
+        </select>
     </nav>
 
-    <header id="home">
-        <h1 class="lang" data-fr="CAMI CAFETIÈRE" data-ar="كامي كافيتيريا">CAMI CAFETIÈRE</h1>
-        <p>"L'Art du Café & du Raffinement"</p>
+    <header class="hero">
+        <div class="hero-content">
+            <h1 id="title">CAMI CAFETIÈRE</h1>
+            <p id="desc">L'expérience unique du café, infusée dans le raffinement et l'élégance. Découvrez nos créations artisanales dans un cadre d'exception.</p>
+            <button class="btn-menu" onclick="window.location.href='#reservation-section'">Réserver une table</button>
+        </div>
     </header>
 
-    <section id="menu">
-        <h2 class="lang" data-fr="Nos Créations" data-ar="قائمتنا المميزة">Nos Créations</h2>
-        <div class="grid">
-            <div class="card"><h3>Espresso</h3><p>5$</p></div>
-            <div class="card"><h3>Tiramisu</h3><p>9$</p></div>
-            <div class="card"><h3>Cappuccino</h3><p>6$</p></div>
-        </div>
+    <section id="menu-section">
+        <h2>Notre Menu</h2>
+        <p>Découvrez notre sélection de cafés et pâtisseries.</p>
     </section>
 
-    <section id="reservation">
-        <h2 class="lang" data-fr="Réservation" data-ar="حجز طاولة">Réservation</h2>
-        <div class="form-container">
-            <input type="text" placeholder="Nom / الاسم">
-            <input type="date">
-            <button class="lang" data-fr="Confirmer" data-ar="تأكيد الحجز">Confirmer</button>
-        </div>
+    <section id="reservation-section">
+        <h2>Réservation</h2>
+        <p>Réservez votre table dès maintenant.</p>
     </section>
 
     <script>
-        let isFr = true;
-        function toggleLang() {
-            isFr = !isFr;
-            const lang = isFr ? 'fr' : 'ar';
-            document.documentElement.lang = lang;
-            document.documentElement.dir = isFr ? 'ltr' : 'rtl';
-            document.querySelectorAll('.lang').forEach(el => {
-                el.innerText = el.getAttribute('data-' + lang);
-            });
+        const translations = {
+            fr: { title: "CAMI CAFETIÈRE", desc: "L'expérience unique du café, infusée dans le raffinement et l'élégance." },
+            en: { title: "CAMI CAFETIÈRE", desc: "The unique coffee experience, infused with refinement and elegance." }
+        };
+
+        function changeLanguage(lang) {
+            document.getElementById('title').innerText = translations[lang].title;
+            document.getElementById('desc').innerText = translations[lang].desc;
         }
     </script>
 </body>
