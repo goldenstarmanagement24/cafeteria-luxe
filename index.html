@@ -1,95 +1,76 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CAMI CAFETIÈRE</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        :root { --gold: #c5a059; --dark-green: #0a2a1a; --black: #0a0a0a; --white: #ffffff; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; background: var(--black); color: var(--white); scroll-behavior: smooth; }
-
-        /* Navigation */
-        nav { position: fixed; width: 100%; padding: 20px 8%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: rgba(0,0,0,0.8); }
-        .logo { font-family: 'Playfair Display'; font-size: 1.5rem; color: var(--gold); }
-        .nav-links a { color: var(--white); text-decoration: none; margin: 0 15px; text-transform: uppercase; }
-        .lang-btn { cursor: pointer; color: var(--gold); border: 1px solid var(--gold); padding: 5px 10px; background: none; }
-
-        /* Hero */
-        .hero { height: 100vh; display: flex; align-items: center; justify-content: center; background: url('1000026674.png') center/cover; }
-        .content { text-align: center; background: rgba(0,0,0,0.6); padding: 40px; border: 1px solid var(--gold); }
-        h1 { font-family: 'Playfair Display'; color: var(--gold); font-size: 3rem; }
-
-        /* Sections */
-        section { padding: 80px 8%; }
-        .section-title { color: var(--gold); text-align: center; margin-bottom: 40px; font-size: 2.5rem; }
+        :root { --black: #0a0a0a; --gold: #c5a059; --cream: #e6dfd1; --dark-green: #0a2a1a; --white: #ffffff; }
+        body { font-family: 'Playfair Display', serif; background-color: var(--black); color: var(--cream); margin: 0; scroll-behavior: smooth; }
+        
+        nav { position: fixed; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; box-sizing: border-box; background: rgba(0,0,0,0.9); z-index: 1000; border-bottom: 1px solid var(--gold); }
+        .nav-links a { color: var(--gold); text-decoration: none; font-weight: bold; margin: 0 10px; }
+        
+        header { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('1000026674.png'); background-size: cover; background-position: center; text-align: center; }
+        h1 { font-size: 4rem; color: var(--gold); margin: 0; }
+        
+        section { padding: 80px 5%; border-bottom: 1px solid #333; }
+        h2 { color: var(--gold); text-align: center; font-size: 2.5rem; margin-bottom: 40px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
         .card { border: 1px solid var(--gold); padding: 20px; text-align: center; }
         
-        /* Form */
-        input, button { display: block; width: 100%; margin: 10px 0; padding: 10px; background: #222; border: 1px solid var(--gold); color: white; }
-        button { cursor: pointer; color: var(--gold); transition: 0.3s; }
-        button:hover { background: var(--gold); color: black; }
+        .form-container { max-width: 500px; margin: auto; }
+        input { width: 100%; padding: 10px; margin: 10px 0; background: #222; border: 1px solid var(--gold); color: white; }
+        button { width: 100%; padding: 10px; background: var(--gold); border: none; cursor: pointer; font-weight: bold; }
     </style>
 </head>
 <body>
 
-<nav>
-    <div class="logo">CAMI CAFETIÈRE</div>
-    <div class="nav-links">
-        <a href="#home" class="lang" data-fr="Accueil" data-ar="الرئيسية">Accueil</a>
-        <a href="#menu" class="lang" data-fr="Menu" data-ar="القائمة">Menu</a>
-        <a href="#res" class="lang" data-fr="Réservation" data-ar="الحجز">Réservation</a>
-    </div>
-    <button class="lang-btn" onclick="toggleLang()">FR / AR</button>
-</nav>
+    <nav>
+        <div class="logo">CAMI CAFETIÈRE</div>
+        <div class="nav-links">
+            <a href="#home" class="lang" data-fr="Accueil" data-ar="الرئيسية">Accueil</a>
+            <a href="#menu" class="lang" data-fr="Menu" data-ar="القائمة">Menu</a>
+            <a href="#reservation" class="lang" data-fr="Réservation" data-ar="حجز">Réservation</a>
+        </div>
+        <button onclick="toggleLang()" style="background:none; color:var(--gold); border:1px solid var(--gold); cursor:pointer;">FR / AR</button>
+    </nav>
 
-<header id="home" class="hero">
-    <div class="content">
-        <h1 id="title">CAMI CAFETIÈRE</h1>
-        <p id="subtitle">L'élégance du café.</p>
-    </div>
-</header>
+    <header id="home">
+        <h1 class="lang" data-fr="CAMI CAFETIÈRE" data-ar="كامي كافيتيريا">CAMI CAFETIÈRE</h1>
+        <p>"L'Art du Café & du Raffinement"</p>
+    </header>
 
-<section id="menu">
-    <h2 class="section-title" id="menu-title">Nos Créations</h2>
-    <div class="grid">
-        <div class="card"><h3>Espresso</h3><p>5€</p></div>
-        <div class="card"><h3>Tiramisu</h3><p>9€</p></div>
-        <div class="card"><h3>Cappuccino</h3><p>6€</p></div>
-    </div>
-</section>
+    <section id="menu">
+        <h2 class="lang" data-fr="Nos Créations" data-ar="قائمتنا المميزة">Nos Créations</h2>
+        <div class="grid">
+            <div class="card"><h3>Espresso</h3><p>5$</p></div>
+            <div class="card"><h3>Tiramisu</h3><p>9$</p></div>
+            <div class="card"><h3>Cappuccino</h3><p>6$</p></div>
+        </div>
+    </section>
 
-<section id="res">
-    <h2 class="section-title" id="res-title">Réservation</h2>
-    <div style="max-width: 400px; margin: auto;">
-        <input type="text" placeholder="Nom">
-        <input type="date">
-        <button id="book-btn">Réserver</button>
-    </div>
-</section>
+    <section id="reservation">
+        <h2 class="lang" data-fr="Réservation" data-ar="حجز طاولة">Réservation</h2>
+        <div class="form-container">
+            <input type="text" placeholder="Nom / الاسم">
+            <input type="date">
+            <button class="lang" data-fr="Confirmer" data-ar="تأكيد الحجز">Confirmer</button>
+        </div>
+    </section>
 
-<script>
-    let isFr = true;
-    const langData = {
-        'menu-title': { fr: 'Nos Créations', ar: 'قائمتنا' },
-        'res-title': { fr: 'Réservation', ar: 'حجز طاولة' },
-        'book-btn': { fr: 'Réserver', ar: 'تأكيد الحجز' },
-        'subtitle': { fr: 'L\'élégance du café.', ar: 'أناقة القهوة' }
-    };
-
-    function toggleLang() {
-        isFr = !isFr;
-        const lang = isFr ? 'fr' : 'ar';
-        document.documentElement.lang = lang;
-        document.documentElement.dir = isFr ? 'ltr' : 'rtl';
-        
-        document.querySelectorAll('.lang').forEach(el => el.innerText = el.getAttribute('data-' + lang));
-        for(let id in langData) {
-            document.getElementById(id).innerText = langData[id][lang];
+    <script>
+        let isFr = true;
+        function toggleLang() {
+            isFr = !isFr;
+            const lang = isFr ? 'fr' : 'ar';
+            document.documentElement.lang = lang;
+            document.documentElement.dir = isFr ? 'ltr' : 'rtl';
+            document.querySelectorAll('.lang').forEach(el => {
+                el.innerText = el.getAttribute('data-' + lang);
+            });
         }
-    }
-</script>
+    </script>
 </body>
 </html>
