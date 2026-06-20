@@ -1,146 +1,95 @@
 <!DOCTYPE html>
-<html lang="fr" dir="ltr">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CAMI CAFETIÈRE | Accueil</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
-    
+    <title>CAMI CAFETIÈRE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --gold: #c5a059;
-            --dark-green: #0a2a1a;
-            --black-overlay: rgba(0, 0, 0, 0.6);
-            --white: #ffffff;
-        }
-
+        :root { --gold: #c5a059; --dark-green: #0a2a1a; --black: #0a0a0a; --white: #ffffff; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; background: var(--black); color: var(--white); scroll-behavior: smooth; }
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #000;
-            color: var(--white);
-            overflow-x: hidden;
-        }
+        /* Navigation */
+        nav { position: fixed; width: 100%; padding: 20px 8%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: rgba(0,0,0,0.8); }
+        .logo { font-family: 'Playfair Display'; font-size: 1.5rem; color: var(--gold); }
+        .nav-links a { color: var(--white); text-decoration: none; margin: 0 15px; text-transform: uppercase; }
+        .lang-btn { cursor: pointer; color: var(--gold); border: 1px solid var(--gold); padding: 5px 10px; background: none; }
 
-        /* تنسيق القائمة العلوية */
-        nav {
-            position: absolute;
-            top: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 30px 8%;
-            z-index: 100;
-        }
+        /* Hero */
+        .hero { height: 100vh; display: flex; align-items: center; justify-content: center; background: url('1000026674.png') center/cover; }
+        .content { text-align: center; background: rgba(0,0,0,0.6); padding: 40px; border: 1px solid var(--gold); }
+        h1 { font-family: 'Playfair Display'; color: var(--gold); font-size: 3rem; }
 
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            letter-spacing: 3px;
-            color: var(--gold);
-        }
-
-        .nav-links a {
-            color: var(--white);
-            text-decoration: none;
-            margin: 0 20px;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover { color: var(--gold); }
-
-        .lang-select { color: var(--gold); cursor: pointer; border: 1px solid var(--gold); padding: 5px; background: transparent; }
-
-        /* قسم الهيرو (الخلفية الرئيسية) */
-        .hero {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: url('background.jpg') no-repeat center center/cover;
-            position: relative;
-        }
-
-        /* المربع الزجاجي في المنتصف */
-        .hero-content {
-            background: var(--black-overlay);
-            padding: 50px;
-            text-align: center;
-            border: 1px solid var(--gold);
-            max-width: 700px;
-            backdrop-filter: blur(5px);
-            animation: fadeIn 1.5s ease-in;
-        }
-
-        .hero-content h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            color: var(--gold);
-            margin-bottom: 20px;
-        }
-
-        .hero-content p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 30px;
-            color: #eee;
-        }
-
-        .btn-menu {
-            padding: 15px 40px;
-            background: transparent;
-            border: 1px solid var(--gold);
-            color: var(--gold);
-            font-size: 1rem;
-            cursor: pointer;
-            transition: 0.4s;
-            text-transform: uppercase;
-        }
-
-        .btn-menu:hover {
-            background: var(--gold);
-            color: #000;
-        }
-
-        /* تأثير الظهور */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* تجاوب الشاشة */
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero-content h1 { font-size: 2.5rem; }
-        }
+        /* Sections */
+        section { padding: 80px 8%; }
+        .section-title { color: var(--gold); text-align: center; margin-bottom: 40px; font-size: 2.5rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .card { border: 1px solid var(--gold); padding: 20px; text-align: center; }
+        
+        /* Form */
+        input, button { display: block; width: 100%; margin: 10px 0; padding: 10px; background: #222; border: 1px solid var(--gold); color: white; }
+        button { cursor: pointer; color: var(--gold); transition: 0.3s; }
+        button:hover { background: var(--gold); color: black; }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">CAMI CAFETIÈRE</div>
-        <div class="nav-links">
-            <a href="#">Accueil</a>
-            <a href="#">Menu</a>
-            <a href="#">Réservation</a>
-            <a href="#">Contact</a>
-        </div>
-        <div class="lang-select">EN | FR ▾</div>
-    </nav>
+<nav>
+    <div class="logo">CAMI CAFETIÈRE</div>
+    <div class="nav-links">
+        <a href="#home" class="lang" data-fr="Accueil" data-ar="الرئيسية">Accueil</a>
+        <a href="#menu" class="lang" data-fr="Menu" data-ar="القائمة">Menu</a>
+        <a href="#res" class="lang" data-fr="Réservation" data-ar="الحجز">Réservation</a>
+    </div>
+    <button class="lang-btn" onclick="toggleLang()">FR / AR</button>
+</nav>
 
-    <header class="hero">
-        <div class="hero-content">
-            <h1>CAMI CAFETIÈRE</h1>
-            <p>L'expérience unique du café, infusée dans le raffinement et l'élégance. Découvrez nos créations artisanales dans un cadre d'exception.</p>
-            <button class="btn-menu">Casiner un menu</button>
-        </div>
-    </header>
+<header id="home" class="hero">
+    <div class="content">
+        <h1 id="title">CAMI CAFETIÈRE</h1>
+        <p id="subtitle">L'élégance du café.</p>
+    </div>
+</header>
 
+<section id="menu">
+    <h2 class="section-title" id="menu-title">Nos Créations</h2>
+    <div class="grid">
+        <div class="card"><h3>Espresso</h3><p>5€</p></div>
+        <div class="card"><h3>Tiramisu</h3><p>9€</p></div>
+        <div class="card"><h3>Cappuccino</h3><p>6€</p></div>
+    </div>
+</section>
+
+<section id="res">
+    <h2 class="section-title" id="res-title">Réservation</h2>
+    <div style="max-width: 400px; margin: auto;">
+        <input type="text" placeholder="Nom">
+        <input type="date">
+        <button id="book-btn">Réserver</button>
+    </div>
+</section>
+
+<script>
+    let isFr = true;
+    const langData = {
+        'menu-title': { fr: 'Nos Créations', ar: 'قائمتنا' },
+        'res-title': { fr: 'Réservation', ar: 'حجز طاولة' },
+        'book-btn': { fr: 'Réserver', ar: 'تأكيد الحجز' },
+        'subtitle': { fr: 'L\'élégance du café.', ar: 'أناقة القهوة' }
+    };
+
+    function toggleLang() {
+        isFr = !isFr;
+        const lang = isFr ? 'fr' : 'ar';
+        document.documentElement.lang = lang;
+        document.documentElement.dir = isFr ? 'ltr' : 'rtl';
+        
+        document.querySelectorAll('.lang').forEach(el => el.innerText = el.getAttribute('data-' + lang));
+        for(let id in langData) {
+            document.getElementById(id).innerText = langData[id][lang];
+        }
+    }
+</script>
 </body>
 </html>
