@@ -2,69 +2,88 @@
 <html lang="fr" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <title>CAMI CAFETIÈRE - Luxury Experience</title>
+    <title>CAMI CAFETIÈRE | Premium Web Experience</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* الألوان الجديدة: الأبيض اللؤلؤي والذهبي الهادئ */
-        :root { --bg: #fdfcf9; --text: #2d2d2d; --gold: #b89766; --white: #ffffff; }
+        :root { --black: #0a0a0a; --gold: #c5a059; --cream: #e6dfd1; --dark-green: #0a2a1a; --white: #ffffff; }
+        body { font-family: 'Playfair Display', serif; background-color: var(--black); color: var(--cream); margin: 0; scroll-behavior: smooth; }
         
-        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg); color: var(--text); margin: 0; scroll-behavior: smooth; }
+        /* Navbar */
+        nav { position: fixed; width: 100%; display: flex; justify-content: space-around; padding: 20px; background: rgba(0,0,0,0.9); z-index: 1000; border-bottom: 1px solid var(--gold); }
+        .nav-links a { color: var(--gold); text-decoration: none; font-weight: bold; margin: 0 10px; }
         
-        nav { position: fixed; width: 100%; background: var(--white); padding: 15px 0; display: flex; justify-content: space-around; box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 1000; }
+        /* Sections */
+        section { padding: 80px 5%; border-bottom: 1px solid #333; }
+        h2 { color: var(--gold); text-align: center; font-size: 2.5rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .card { border: 1px solid var(--gold); padding: 20px; text-align: center; cursor: pointer; transition: 0.4s; }
+        .card:hover { background: var(--gold); color: var(--black); }
         
-        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #e8e4db; text-align: center; }
+        /* Footer & Contact */
+        .footer { background: var(--dark-green); padding: 40px; text-align: center; }
+        .social-icons a { color: var(--gold); font-size: 24px; margin: 0 15px; }
         
-        .section { padding: 80px 10%; }
-        
-        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-        .card { padding: 20px; border: 1px solid var(--gold); cursor: pointer; text-align: center; transition: 0.3s; }
-        .card:hover { background: var(--gold); color: white; }
-
-        .modal { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.7); justify-content: center; align-items: center; }
-        .modal-content { background: white; padding: 40px; border-radius: 8px; max-width: 400px; text-align: center; }
+        /* Modal */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 2000; justify-content: center; align-items: center; }
+        .modal-content { background: var(--cream); color: var(--black); padding: 50px; border-radius: 15px; text-align: center; width: 80%; max-width: 500px; }
     </style>
 </head>
 <body>
 
     <nav>
-        <div id="nav-links">
-            <a href="#home" data-en="Home" data-fr="Accueil" data-ar="الرئيسية">Accueil</a> |
-            <a href="#menu" data-en="Menu" data-fr="Menu" data-ar="القائمة">Menu</a>
+        <div class="logo">CAMI CAFETIÈRE</div>
+        <div class="nav-links">
+            <a href="#home" data-ar="الرئيسية" data-fr="Accueil" data-en="Home">Accueil</a>
+            <a href="#menu" data-ar="القائمة" data-fr="Menu" data-en="Menu">Menu</a>
+            <a href="#reservation" data-ar="حجز" data-fr="Réservation" data-en="Reservation">Réservation</a>
+            <a href="#contact" data-ar="اتصل بنا" data-fr="Contact" data-en="Contact">Contact</a>
         </div>
-        <div>
-            <button onclick="setLang('en')">EN</button>
-            <button onclick="setLang('fr')">FR</button>
-            <button onclick="setLang('ar')">AR</button>
-        </div>
+        <select onchange="setLang(this.value)" style="background:none; color:var(--gold); border:1px solid var(--gold)">
+            <option value="fr">FR</option><option value="ar">AR</option><option value="en">EN</option>
+        </select>
     </nav>
 
-    <header id="home" class="hero">
-        <h1 data-en="CAMI CAFETIÈRE" data-fr="CAMI CAFETIÈRE" data-ar="كامي كافيتيريا">CAMI CAFETIÈRE</h1>
-        <p data-en="The Art of Coffee" data-fr="L'Art du Café" data-ar="فن القهوة الراقي">L'Art du Café & du Raffinement</p>
+    <header id="home" style="height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; background:linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('coffee-hero.jpg'); background-size:cover;">
+        <h1 data-ar="كامي كافيتيريا" data-fr="CAMI CAFETIÈRE" data-en="CAMI CAFETIÈRE" style="font-size: 4rem; color:var(--gold);">CAMI CAFETIÈRE</h1>
+        <p>"L'Art du Café & du Raffinement"</p>
     </header>
 
-    <section id="menu" class="section">
-        <h2 data-en="Our Signature" data-fr="Nos Créations" data-ar="منتجاتنا المميزة">Nos Créations</h2>
-        <div class="menu-grid">
-            <div class="card" onclick="openModal('Espresso', '8€', 'Rich and intense')">
-                <h3 data-en="Espresso" data-fr="Espresso" data-ar="إسبريسو">Espresso</h3>
-            </div>
-            <div class="card" onclick="openModal('Cheesecake', '12€', 'Smooth and creamy')">
-                <h3 data-en="Cheesecake" data-fr="Cheesecake" data-ar="تشيز كيك">Cheesecake</h3>
-            </div>
+    <section id="menu">
+        <h2 data-ar="منتجاتنا المميزة" data-fr="Nos Créations" data-en="Our Creations">Nos Créations</h2>
+        <div class="grid">
+            <div class="card" onclick="openModal('Espresso', '5$', 'Rich & Bold')"><h3>Espresso</h3></div>
+            <div class="card" onclick="openModal('Tiramisu', '9$', 'Authentic Italian')"><h3>Tiramisu</h3></div>
+            <div class="card" onclick="openModal('Cappuccino', '6$', 'Creamy Perfection')"><h3>Cappuccino</h3></div>
+            <div class="card" onclick="openModal('Cheesecake', '8$', 'French Style')"><h3>Cheesecake</h3></div>
         </div>
+    </section>
+
+    <section id="gallery">
+        <h2 data-ar="معرض الصور" data-fr="Galerie" data-en="Gallery">Galerie Premium</h2>
+        <div class="grid" style="height:300px; background:#222; display:flex; justify-content:center; align-items:center;">
+            <p data-ar="صور الديكور والمشروبات ستظهر هنا" data-fr="Galerie images ici" data-en="Gallery images here">📸</p>
+        </div>
+    </section>
+
+    <section id="contact" class="footer">
+        <h2 data-ar="تواصل معنا" data-fr="Contactez-nous" data-en="Contact Us">Contact</h2>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+        <iframe src="https://www.google.com/maps/embed?..." width="100%" height="200" style="border:0; margin-top:20px;" allowfullscreen></iframe>
     </section>
 
     <div id="modal" class="modal" onclick="this.style.display='none'">
         <div class="modal-content" onclick="event.stopPropagation()">
             <h2 id="m-title"></h2>
-            <p id="m-price"></p>
+            <p id="m-price" style="font-size: 1.5rem; color: var(--gold);"></p>
             <p id="m-desc"></p>
-            <button onclick="document.getElementById('modal').style.display='none'">Close</button>
+            <button onclick="document.getElementById('modal').style.display='none'" style="padding:10px 20px;">Close</button>
         </div>
     </div>
 
     <script>
-        // نظام تبديل اللغات
         function setLang(lang) {
             document.documentElement.lang = lang;
             document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
@@ -72,12 +91,10 @@
                 el.innerText = el.getAttribute('data-' + lang);
             });
         }
-
-        // دالة عرض تفاصيل المنتج
-        function openModal(title, price, desc) {
-            document.getElementById('m-title').innerText = title;
-            document.getElementById('m-price').innerText = price;
-            document.getElementById('m-desc').innerText = desc;
+        function openModal(t, p, d) {
+            document.getElementById('m-title').innerText = t;
+            document.getElementById('m-price').innerText = p;
+            document.getElementById('m-desc').innerText = d;
             document.getElementById('modal').style.display = 'flex';
         }
     </script>
