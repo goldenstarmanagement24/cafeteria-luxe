@@ -21,7 +21,6 @@
         .nav-links a { color: var(--gold); text-decoration: none; font-weight: bold; margin: 0 15px; }
         .menu-toggle { display: none; cursor: pointer; color: var(--gold); font-size: 24px; }
 
-        /* Mobile Menu */
         @media (max-width: 768px) {
             .menu-toggle { display: block; }
             .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--black); flex-direction: column; padding: 20px 0; border-bottom: 1px solid var(--gold); }
@@ -35,8 +34,10 @@
         .card { border: 1px solid var(--gold); padding: 20px; text-align: center; cursor: pointer; transition: 0.4s; }
         .card:hover { background: var(--gold); color: var(--black); }
         
-        /* CTA Button */
-        .btn { display: inline-block; padding: 15px 30px; background: var(--gold); color: var(--black); text-decoration: none; font-weight: bold; margin-top: 20px; transition: 0.3s; }
+        /* Forms */
+        .form-group { margin-bottom: 15px; text-align: left; max-width: 400px; margin: 0 auto 15px; }
+        input, select { width: 100%; padding: 10px; background: #222; border: 1px solid var(--gold); color: var(--white); border-radius: 5px; }
+        .btn { display: inline-block; padding: 15px 30px; background: var(--gold); color: var(--black); text-decoration: none; font-weight: bold; cursor: pointer; border: none; transition: 0.3s; }
         .btn:hover { background: var(--cream); }
 
         /* Footer */
@@ -82,11 +83,12 @@
 
     <section id="reservation">
         <h2 data-ar="حجز طاولة" data-fr="Réservation" data-en="Reservation">Réservation</h2>
-        <div style="text-align: center; color: var(--cream);">
-            <p data-ar="يرجى الاتصال بنا للحجز" data-fr="Veuillez nous contacter pour réserver" data-en="Please contact us to book">
-                Veuillez nous contacter pour réserver votre table.
-            </p>
-        </div>
+        <form onsubmit="alert('Merci pour votre demande!'); return false;">
+            <div class="form-group"><input type="text" placeholder="Nom / الاسم" required></div>
+            <div class="form-group"><input type="date" required></div>
+            <div class="form-group"><input type="number" placeholder="Nombre de personnes / عدد الأشخاص" required></div>
+            <div style="text-align:center;"><button type="submit" class="btn" data-ar="إرسال الطلب" data-fr="Envoyer" data-en="Send">Envoyer</button></div>
+        </form>
     </section>
 
     <section id="contact" class="footer">
@@ -102,7 +104,7 @@
             <h2 id="m-title"></h2>
             <p id="m-price" style="font-size: 1.5rem; color: var(--gold);"></p>
             <p id="m-desc"></p>
-            <button onclick="document.getElementById('modal').style.display='none'" style="padding:10px 20px; cursor:pointer;">Close</button>
+            <button onclick="document.getElementById('modal').style.display='none'" class="btn">Close</button>
         </div>
     </div>
 
