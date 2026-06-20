@@ -19,9 +19,13 @@
         .hero { height: 100vh; display: flex; justify-content: center; align-items: center; background: #222; text-align: center; }
         .hero-content { border: 1px solid var(--gold); padding: 50px; max-width: 700px; backdrop-filter: blur(5px); }
         h1 { color: var(--gold); font-size: 3.5rem; margin-bottom: 20px; }
-        .btn-menu { margin-top: 20px; padding: 15px 40px; border: 1px solid var(--gold); background: transparent; color: var(--gold); cursor: pointer; text-transform: uppercase; }
         
+        /* تنسيق قسم الحجز */
         section { padding: 100px 8%; text-align: center; }
+        form { display: flex; flex-direction: column; max-width: 400px; margin: 30px auto; gap: 15px; }
+        input, select, button { padding: 12px; background: #111; border: 1px solid var(--gold); color: #fff; }
+        .btn-submit { color: var(--gold); cursor: pointer; text-transform: uppercase; transition: 0.3s; }
+        .btn-submit:hover { background: var(--gold); color: #000; }
     </style>
 </head>
 <body>
@@ -31,60 +35,4 @@
         <div class="nav-links">
             <a href="#" data-lang-fr="Accueil" data-lang-en="Home">Accueil</a>
             <a href="#menu" data-lang-fr="Menu" data-lang-en="Menu">Menu</a>
-            <a href="#reservation" data-lang-fr="Réservation" data-lang-en="Reservation">Réservation</a>
-        </div>
-        <select class="lang-select" onchange="updateLanguage(this.value)">
-            <option value="fr">FR</option>
-            <option value="en">EN</option>
-        </select>
-    </nav>
-
-    <header class="hero">
-        <div class="hero-content">
-            <h1 id="hero-title">CAMI CAFETIÈRE</h1>
-            <p id="hero-desc">L'expérience unique du café, infusée dans le raffinement et l'élégance.</p>
-            <button class="btn-menu" id="btn-res" onclick="window.location.href='#reservation'">Réserver une table</button>
-        </div>
-    </header>
-
-    <section id="menu">
-        <h2 id="menu-title">Notre Menu</h2>
-    </section>
-
-    <section id="reservation">
-        <h2 id="res-title">Réservation</h2>
-    </section>
-
-    <script>
-        const translations = {
-            fr: {
-                heroTitle: "CAMI CAFETIÈRE",
-                heroDesc: "L'expérience unique du café, infusée dans le raffinement et l'élégance.",
-                btnRes: "Réserver une table",
-                menuTitle: "Notre Menu",
-                resTitle: "Réservation"
-            },
-            en: {
-                heroTitle: "CAMI CAFETIÈRE",
-                heroDesc: "The unique coffee experience, infused with refinement and elegance.",
-                btnRes: "Book a table",
-                menuTitle: "Our Menu",
-                resTitle: "Reservation"
-            }
-        };
-
-        function updateLanguage(lang) {
-            document.getElementById('hero-title').innerText = translations[lang].heroTitle;
-            document.getElementById('hero-desc').innerText = translations[lang].heroDesc;
-            document.getElementById('btn-res').innerText = translations[lang].btnRes;
-            document.getElementById('menu-title').innerText = translations[lang].menuTitle;
-            document.getElementById('res-title').innerText = translations[lang].resTitle;
-            
-            // تحديث الروابط في القائمة
-            document.querySelectorAll('.nav-links a').forEach(el => {
-                el.innerText = el.getAttribute('data-lang-' + lang);
-            });
-        }
-    </script>
-</body>
-</html>
+            <a href="#reservation" data-lang-fr="
